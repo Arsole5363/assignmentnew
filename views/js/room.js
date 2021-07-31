@@ -53,8 +53,8 @@ function eventBinding() {
         try {
             var vstream = await navigator.mediaDevices.getUserMedia({
                 video: {
-                    width: 200,
-                    height: 200
+                    width: 480,
+                    height: 350
                 },
                 audio: false
             });
