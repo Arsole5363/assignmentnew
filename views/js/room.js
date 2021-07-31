@@ -14,7 +14,7 @@ var Demo = (function(){
     var _localVideo;
 
     var _rtpSender;
-var socket=io('http://localhost:3000')
+var socket=io()
 async function _init() {
 
     _localVideo = document.getElementById('videoCtr');
