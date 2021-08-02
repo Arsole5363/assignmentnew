@@ -5,8 +5,8 @@ var Demo = (function(){
     var _videoTrack = null;
     var _screenTrack = null;
 
-    var _mediaRecorder;
-    var _recordedChunks = [];
+    // var _mediaRecorder;
+    // var _recordedChunks = [];
 
     var connection = null;
     var _remoteStream = new MediaStream();
@@ -65,13 +65,13 @@ function eventBinding() {
                 $("#btnStartStopCam").text("Stop Camera");
             }
             //debugger;
-            //if (_rtpSender && _rtpSender.track && _videoTrack && connection) {
-            //    _rtpSender.replaceTrack(_videoTrack);
-            //}
-            //else {
-            //    if (_videoTrack && connection)
-            //        _rtpSender = connection.addTrack(_videoTrack);
-            //}
+            if (_rtpSender && _rtpSender.track && _videoTrack && connection) {
+               _rtpSender.replaceTrack(_videoTrack);
+            }
+            else {
+               if (_videoTrack && connection)
+                   _rtpSender = connection.addTrack(_videoTrack);
+            }
 
 
         } catch (e) {
@@ -225,7 +225,7 @@ async function _createConnection() {
 
         if (event.streams.length > 0) {
             
-            //_remoteStream = event.streams[0];
+            _remoteStream = event.streams[0];
         }
 
         if (event.track.kind == 'video') {
@@ -242,7 +242,7 @@ async function _createConnection() {
         newVideoElement.srcObject = null;
         newVideoElement.srcObject = _remoteStream;
         newVideoElement.load();
-        //newVideoElement.play();
+        newVideoElement.play();
     };
 
     
